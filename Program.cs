@@ -37,12 +37,13 @@ namespace EchoServerTest
                             byte[] byBuffer = new byte[160];                      
                             l_socket.Receive(byBuffer);
                             string s1 = System.Text.Encoding.ASCII.GetString(byBuffer).TrimEnd('\0');
-                            Console.WriteLine(s1);
+                            //Console.WriteLine(s1);
                             string s2 = "###END";
                             if (s1.Length >= 6 && 0 == s1.Substring(s1.Length-6, 6).CompareTo(s2))
                             { 
                                 reading = false;
                                 dt = DateTime.Now.ToString();
+                                Console.WriteLine(s1.Substring(0,s1.Length-6));
                         
                             }
                             if (reading)
