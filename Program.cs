@@ -9,12 +9,12 @@ namespace EchoServerTest
 {
     class Program
     {
-        
+		enum Conf: int { BUFSIZE = 160 }
+            
         static void Main(string[] args)
         {
-            if ((args.Length==1))
-            {
-                
+			if ((args.Length==1))
+            {           
                 try
                 {
                     IPEndPoint host = new IPEndPoint(IPAddress.Parse(args[0]), 8080);
@@ -34,7 +34,7 @@ namespace EchoServerTest
                         bool reading = true;
                         while (reading)
                         {
-                            byte[] byBuffer = new byte[160];                      
+                            byte[] byBuffer = new byte[(int)Conf.BUFSIZE];                      
                             l_socket.Receive(byBuffer);
                             string s1 = System.Text.Encoding.ASCII.GetString(byBuffer).TrimEnd('\0');
                             //Console.WriteLine(s1);
